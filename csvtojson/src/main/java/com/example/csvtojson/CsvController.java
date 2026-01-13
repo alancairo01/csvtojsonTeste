@@ -26,7 +26,7 @@ public class CsvController {
         }
 
         // Se seu CSV for do Excel BR, normalmente é ';'
-        char separator = ','; // troque para ';' se necessário
+        char separator = ','; // troque para ';'
 
         CSVParser parser = new CSVParserBuilder()
                 .withSeparator(separator)
