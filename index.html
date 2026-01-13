@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <title>CSV → JSON</title>
+  <style>
+    body { font-family: Arial; max-width: 900px; margin: 40px auto; }
+    pre { background: #111; color: #eee; padding: 16px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+
+  <h1>Converter CSV para JSON</h1>
+
+  <input type="file" id="csv" accept=".csv" />
+  <button onclick="enviar()">Enviar</button>
+
+  <pre id="resultado">{}</pre>
+
+  <script>
+    function enviar() {
+      const file = document.getElementById('csv').files[0];
+      if (!file) {
+        alert("Selecione um CSV");
+        return;
+      }
+
+      const form = new FormData();
+      form.append("file", file);
+
+      fetch("http://localhost:8080/api/csv-to-json", {
+        method: "POST",
+        body: form
+      })
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById("resultado").textContent =
+          JSON.stringify(data, null, 2);
+      })
+      .catch(err => {
+        document.getElementById("resultado").textContent =
+          "Erro: " + err;
+      });
+    }
+  </script>
+
+</body>
+</html>
