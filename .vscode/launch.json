@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-CsvtojsonApplication<csvtojson>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.csvtojson.CsvtojsonApplication",
+            "projectName": "csvtojson",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
